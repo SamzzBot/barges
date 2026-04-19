@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barakk Studio - Kolase & Watermark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <section id="landing" class="landing-page">
+        <div class="gradient-bg">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        
+        <div class="landing-content">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                </div>
+                <h1 class="brand-name">Barakk Studio</h1>
+                <p class="tagline">Kolase Foto & Watermark Profesional</p>
+            </div>
+            
+            <div class="feature-preview">
+                <div class="preview-card">
+                    <div class="preview-icon">🖼️</div>
+                    <span>Kolase Rapat</span>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-icon">💧</div>
+                    <span>Watermark</span>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-icon">⚡</div>
+                    <span>Batch Download</span>
+                </div>
+            </div>
+            
+            <button class="cta-button" onclick="enterApp()">
+                <span>Mulai Sekarang</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Main App -->
+    <main id="app" class="app-container hidden">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-brand">
+                <div class="header-logo">B</div>
+                <span>Barakk Studio</span>
+            </div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="collage">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    Kolase
+                </button>
+                <button class="nav-tab" data-tab="watermark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    Watermark
+                </button>
+            </nav>
+        </header>
+
+        <!-- Collage Section -->
+        <section id="collage-section" class="section active">
+            <div class="workspace">
+                <!-- Sidebar Controls -->
+                <aside class="sidebar">
+                    <div class="control-group">
+                        <h3>📁 Upload Foto</h3>
+                        <div class="upload-zone" id="dropZone">
+                            <input type="file" id="fileInput" multiple accept="image/*" hidden>
+                            <div class="upload-content">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                                <p>Drop foto di sini atau klik</p>
+                                <span>Bisa banyak foto sekaligus</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>📐 Tata Letak</h3>
+                        <div class="layout-grid" id="layoutGrid">
+                            <button class="layout-btn active" data-layout="grid3" title="3 Foto Vertikal">
+                                <div class="layout-preview grid-3">
+                                    <div></div><div></div><div></div>
+                                </div>
+                            </button>
+                            <button class="layout-btn" data-layout="grid2h" title="2 Foto Horizontal">
+                                <div class="layout-preview grid-2h">
+                                    <div></div><div></div>
+                                </div>
+                            </button>
+                            <button class="layout-btn" data-layout="grid4" title="4 Foto (2x2)">
+                                <div class="layout-preview grid-4">
+                                    <div></div><div></div>
+                                    <div></div><div></div>
+                                </div>
+                            </button>
+                            <button class="layout-btn" data-layout="grid6" title="6 Foto (2x3)">
+                                <div class="layout-preview grid-6">
+                                    <div></div><div></div>
+                                    <div></div><div></div>
+                                    <div></div><div></div>
+                                </div>
+                            </button>
+                            <button class="layout-btn" data-layout="grid9" title="9 Foto (3x3)">
+                                <div class="layout-preview grid-9">
+                                    <div></div><div></div><div></div>
+                                    <div></div><div></div><div></div>
+                                    <div></div><div></div><div></div>
+                                </div>
+                            </button>
+                            <button class="layout-btn" data-layout="grid34" title="3 Foto Horizontal">
+                                <div class="layout-preview grid-3h">
+                                    <div></div><div></div><div></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>📏 Rasio & Ukuran</h3>
+                        <div class="ratio-buttons" id="ratioButtons">
+                            <button class="ratio-btn active" data-ratio="9:16" data-width="1080" data-height="1920">9:16</button>
+                            <button class="ratio-btn" data-ratio="1:1" data-width="1080" data-height="1080">1:1</button>
+                            <button class="ratio-btn" data-ratio="4:5" data-width="1080" data-height="1350">4:5</button>
+                            <button class="ratio-btn" data-ratio="16:9" data-width="1920" data-height="1080">16:9</button>
+                            <button class="ratio-btn" data-ratio="3:4" data-width="1080" data-height="1440">3:4</button>
+                            <button class="ratio-btn" data-ratio="2:3" data-width="1080" data-height="1620">2:3</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>🎨 Penyesuaian</h3>
+                        <div class="adjustment-sliders">
+                            <label>
+                                <span>Padding</span>
+                                <input type="range" id="paddingSlider" min="0" max="20" value="0" class="slider">
+                                <span class="value">0px</span>
+                            </label>
+                            <label>
+                                <span>Border Radius</span>
+                                <input type="range" id="radiusSlider" min="0" max="50" value="0" class="slider">
+                                <span class="value">0px</span>
+                            </label>
+                            <label>
+                                <span>Background</span>
+                                <input type="color" id="bgColor" value="#000000" class="color-picker">
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="action-btn primary" id="downloadCollage">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Kolase
+                    </button>
+                </aside>
+
+                <!-- Preview Area -->
+                <div class="preview-area">
+                    <div class="canvas-container" id="canvasContainer">
+                        <canvas id="collageCanvas"></canvas>
+                    </div>
+                    <div class="image-counter" id="imageCounter">
+                        <span>0 foto dipilih</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Watermark Section -->
+        <section id="watermark-section" class="section">
+            <div class="workspace">
+                <aside class="sidebar">
+                    <div class="control-group">
+                        <h3>📁 Upload Foto</h3>
+                        <div class="upload-zone" id="wmDropZone">
+                            <input type="file" id="wmFileInput" multiple accept="image/*" hidden>
+                            <div class="upload-content">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="17 8 12 3 7 8"/>
+                                    <line x1="12" y1="3" x2="12" y2="15"/>
+                                </svg>
+                                <p>Drop foto untuk watermark</p>
+                                <span>Support batch processing</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>✏️ Teks Watermark</h3>
+                        <input type="text" id="wmText" placeholder="BARAKK STUDIO" class="text-input" value="BARAKK STUDIO">
+                        
+                        <div class="font-selector">
+                            <label>Pilih Font</label>
+                            <select id="wmFont" class="select-input">
+                                <option value="'Montserrat', sans-serif">Montserrat (Modern)</option>
+                                <option value="'Inter', sans-serif">Inter (Clean)</option>
+                                <option value="'Poppins', sans-serif">Poppins (Friendly)</option>
+                                <option value="'Bebas Neue', sans-serif">Bebas Neue (Bold)</option>
+                                <option value="'Playfair Display', serif">Playfair (Elegant)</option>
+                                <option value="'Pacifico', cursive">Pacifico (Casual)</option>
+                                <option value="'Great Vibes', cursive">Great Vibes (Script)</option>
+                            </select>
+                        </div>
+
+                        <div class="style-options">
+                            <label class="style-label">
+                                <input type="checkbox" id="wmBold" checked>
+                                <span>Bold</span>
+                            </label>
+                            <label class="style-label">
+                                <input type="checkbox" id="wmItalic">
+                                <span>Italic</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>🎨 Penampilan</h3>
+                        <div class="adjustment-sliders">
+                            <label>
+                                <span>Ukuran Font</span>
+                                <input type="range" id="wmSize" min="20" max="200" value="60" class="slider">
+                                <span class="value">60px</span>
+                            </label>
+                            <label>
+                                <span>Opacity</span>
+                                <input type="range" id="wmOpacity" min="10" max="100" value="50" class="slider">
+                                <span class="value">50%</span>
+                            </label>
+                            <label>
+                                <span>Rotasi</span>
+                                <input type="range" id="wmRotation" min="-180" max="180" value="-45" class="slider">
+                                <span class="value">-45°</span>
+                            </label>
+                            <label>
+                                <span>Spacing</span>
+                                <input type="range" id="wmSpacing" min="50" max="500" value="200" class="slider">
+                                <span class="value">200px</span>
+                            </label>
+                        </div>
+                        
+                        <div class="color-row">
+                            <label>
+                                <span>Warna Teks</span>
+                                <input type="color" id="wmColor" value="#ffffff" class="color-picker">
+                            </label>
+                            <label>
+                                <input type="checkbox" id="wmShadow" checked>
+                                <span>Shadow</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <h3>📍 Posisi</h3>
+                        <div class="position-grid" id="wmPosition">
+                            <button class="pos-btn" data-pos="top-left">↖</button>
+                            <button class="pos-btn" data-pos="top-center">↑</button>
+                            <button class="pos-btn" data-pos="top-right">↗</button>
+                            <button class="pos-btn" data-pos="center-left">←</button>
+                            <button class="pos-btn active" data-pos="center">•</button>
+                            <button class="pos-btn" data-pos="center-right">→</button>
+                            <button class="pos-btn" data-pos="bottom-left">↙</button>
+                            <button class="pos-btn" data-pos="bottom-center">↓</button>
+                            <button class="pos-btn" data-pos="bottom-right">↘</button>
+                        </div>
+                        <label class="pattern-label">
+                            <input type="checkbox" id="wmPattern" checked>
+                            <span>Pattern (Tiling)</span>
+                        </label>
+                    </div>
+
+                    <button class="action-btn primary" id="downloadWatermark">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="7 10 12 15 17 10"/>
+                            <line x1="12" y1="15" x2="12" y2="3"/>
+                        </svg>
+                        Download Semua
+                    </button>
+                </aside>
+
+                <div class="preview-area">
+                    <div class="wm-preview-container" id="wmPreviewContainer">
+                        <div class="wm-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                                <circle cx="8.5" cy="8.5" r="1.5"/>
+                                <polyline points="21 15 16 10 5 21"/>
+                            </svg>
+                            <p>Upload foto untuk preview</p>
+                        </div>
+                    </div>
+                    <div class="batch-status" id="batchStatus">
+                        <span>0 foto siap</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loading-spinner"></div>
+        <p>Memproses...</p>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
